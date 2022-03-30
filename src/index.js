@@ -8,7 +8,7 @@ function clearFields() {
   $('#searchLocation').val("");
   $('.showRestaurants').text("");
 }
-
+///TEST
 function getElements(response) {
   for (let i = 0; i < response.data.length; i++) {                                           // adjust
   if (response.data[i].images.downsized.url) {                                               // adjust
