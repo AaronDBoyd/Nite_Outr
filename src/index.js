@@ -27,14 +27,14 @@ function getElements(response) {
 
 $(document).ready(function() {
   $('#enterSearch').click(function() {
-    const keyword = $('#keyWordSearch').val();
+    const searchWord = $('#keyWordSearch').val();
     const zip = $('#searchLocation').val();
     const radius = $('#searchRadius').val();
     const price = $('#priceRange').val();
     const sort = $('#sortBy').val();
     //let params = (zip, keyword, radius, price, sort);
     clearFields();
-    DinnerService.getFood(keyword, zip, radius, price, sort)
+    DinnerService.getFood(searchWord, zip, radius, price, sort)
       .then(function(response) {
         getElements(response);
       });
