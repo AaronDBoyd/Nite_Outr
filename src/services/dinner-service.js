@@ -11,17 +11,17 @@ export default class DinnerService {
       headers: myHeaders,
       redirect: 'follow',
     };
-    
-    // let zip;
-    // let radius;
-    // let sort;
-    // let price;
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&limit=15&price=${price}`, requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&limit=50&sort_by=rating&price=${price}`, requestOptions)
+      .then(function(response){
+        if(!response.ok){
+          throw Error(response.statusText);
+        }
+        return response.json();
+      })
+      .catch(function(error){
+        return error;
+      });
   }
-  // .catch(error => {
-  //   return error;
-  //  })
+    
 }

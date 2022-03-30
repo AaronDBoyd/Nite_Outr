@@ -14,12 +14,13 @@ function clearFields() {
 }
 
 function getElements(response) {
+  console.log(response)
   // for (let i = 0; i < response.data.length; i++) {  
 
   if (response) {  
     const grub = (response.businesses[0].name);                                             
     $('.showRestaurants').append(`${grub}`); 
-    console.log(response.json());   
+    //console.log(response.json());   
   } else {
     $('.showErrors').text(`There was an error processing your request: ${response.message}`);
   }
@@ -32,7 +33,7 @@ $(document).ready(function() {
     const radius = $('#searchRadius').val();
     const price = $('#priceRange').val();
     const sort = $('#sortBy').val();
-    //let params = (zip, keyword, radius, price, sort);
+  
     clearFields();
     DinnerService.getFood(searchWord, zip, radius, price, sort)
       .then(function(response) {
