@@ -9,18 +9,18 @@ function clearFields() {
   $('#searchLocation').val("");
   $('#searchRadius').val("");
   $('#priceRange').val("");
-  $('#sortBy').val("");
+  // $('#sortBy').val("");
   $('.showRestaurants').text("");
+  $('.showErrors').text;
 }
 
 function getElements(response) {
-  console.log(response)
+  console.log(response);
   // for (let i = 0; i < response.data.length; i++) {  
 
   if (response) {  
     const grub = (response.businesses[0].name);                                             
     $('.showRestaurants').append(`${grub}`); 
-    //console.log(response.json());   
   } else {
     $('.showErrors').text(`There was an error processing your request: ${response.message}`);
   }
@@ -32,10 +32,10 @@ $(document).ready(function() {
     const zip = $('#searchLocation').val();
     const radius = $('#searchRadius').val();
     const price = $('#priceRange').val();
-    const sort = $('#sortBy').val();
+    // const sortBy = $('#sortBy').val();
   
     clearFields();
-    DinnerService.getFood(searchWord, zip, radius, price, sort)
+    DinnerService.getFood(searchWord, zip, radius, price)
       .then(function(response) {
         getElements(response);
       });
