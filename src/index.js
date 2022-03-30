@@ -5,7 +5,11 @@ import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
 
 function clearFields() {
+  $('#keyWordSearch').val("");
   $('#searchLocation').val("");
+  $('#searchRadius').val("");
+  $('#priceRange').val("");
+  $('#sortBy').val("");
   $('.showRestaurants').text("");
 }
 
@@ -23,9 +27,14 @@ function getElements(response) {
 
 $(document).ready(function() {
   $('#enterSearch').click(function() {
-    const keyword = $('#searchLocation').val();
+    const keyword = $('#keyWordSearch').val();
+    const zip = $('#searchLocation').val();
+    const radius = $('#searchRadius').val();
+    const price = $('#priceRange').val();
+    const sort = $('#sortBy').val();
+    //let params = (zip, keyword, radius, price, sort);
     clearFields();
-    DinnerService.getFood(keyword)
+    DinnerService.getFood(keyword, zip, radius, price, sort)
       .then(function(response) {
         getElements(response);
       });
