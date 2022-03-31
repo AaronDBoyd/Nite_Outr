@@ -20,11 +20,14 @@ function getElements(response) {
   for (let i = 0; i < response.businesses.length; i++) {  
 
     if (response) {  
-      const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
-      let grubAsString = grub.join(', ');                                        
-      $('.showRestaurants').append(`${grubAsString} <br>`); 
+      const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
+      let grubAsString = grub.join(', ');
+      const url = response.businesses[i].url;
+      const urlAsDisplay = (`Click <a  id="link" href =${url}/a> here to learn more`)
+      ;                                        
+      $('.showRestaurants').append(`${grubAsString}<br>${urlAsDisplay}<br><br>`); 
     } else {
-      $('.showErrors').text(`There was an error processing your request: ${response.message}`);
+      $('.showErrors').text(`There was an error processing your request: ${response.error}`);
     }
   }
 }

@@ -11,7 +11,7 @@ export default class DinnerService {
       redirect: 'follow',
     };
 
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&categories=restaurants&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
       .then(function(response){
         if(!response.ok){
           throw Error(response.statusText);
