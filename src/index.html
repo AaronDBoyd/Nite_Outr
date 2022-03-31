@@ -7,23 +7,40 @@
 <body>
   <div class="container">
     <h1>Search for Restaurants</h1>
+    <h1>Is this a website?</h1>
+
+    <label for="keyWordSearch">What are you in the mood for?</label>
+    <input id="keyWordSearch" type="text">
     <label for="searchLocation">Enter a location:</label>
     <input id="searchLocation" type="text">
+    <h2>how far do you want to travel?</h2>
+    <select class="form-control" id="searchRadius">
+      <option value="1000">Less than a mile</option>
+      <option value="1600">Within a mile</option>
+      <option value="3200">We could go up to two miles, I guess?</option>
+      <option value="4800">We've got bikes, lets see what is within three miles!</option>
+      <option value="8000">I'm happy to travel, show me things within five miles</option>
+    </select>
+
+    <h2>How's your wallet feel?</h2>
+    <select class = "form-control" id="priceRange">
+      <option value ="1">Kinda light</option>
+      <option value ="1,2">I could splurge, but I'm still on a budget</option>
+      <option value="1,2,3">Hey, I got some money to burn</option>
+      <option value="1,2,3,4">Psh, I'm a web dev, I don't worry about money</option>
+    </select>
+    
+    <!-- <h2>Sort my results by...</h2>
+    <select class="form-control" id="sortBy">
+      <option value="rating">Rating</option>
+      <option value="review_count">The amount of reviews</option>
+      <option value="distance">Distance</option>
+    </select> -->
+
     <button class="btn-success" id="enterSearch">Search</button>
     <div class="showRestaurants"></div>
     
     <div class="showErrors"></div>
-  
-
-
-
-
-
-
-
-
-
-
   </div>
 </body>
 </html>
