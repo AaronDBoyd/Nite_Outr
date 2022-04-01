@@ -45,6 +45,27 @@ function getElements(response) {
 }
 }
 
+function getElements(responseA) {
+  console.log(responseA);
+  // for (let i = 0; i < responseA.businesses.length; i++) {  
+
+  //   if (responseA) {  
+  //     const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
+  //     let grubAsString = grub.join(', ');                                        
+  //     $('.showRestaurants').append(`${grubAsString} <br>`); 
+  for (let i = 0; i < responseA.businesses.length; i++) {  
+    if (responseA) {  
+      const plans = responseA.businesses[i].name;  
+      const imageA = responseA.businesses[i].image_url; 
+      const phoneA = responseA.businesses[i].display_phone; 
+      const addressA = responseA.businesses[i].location.display_address;                                         
+      $('.showActivities').append(`${plans},<br>${phoneA},<br>${addressA}<br><br>`); 
+    } else {
+      $('.showErrors').text(`There was an error processing your request: ${responseA.message}`);
+    }
+}
+}
+
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     const searchWord = $('#keyWordSearch').val();
@@ -69,8 +90,8 @@ $(document).ready(function() {
 
     clearFields();
     ActivityService.getPlans(searchWordA, zipA, radiusA, priceA, resultsTotalA)
-      .then(function(response) {
-        getElements(response);
+      .then(function(responseA) {
+        getElements(responseA);
     });
   });
 });
