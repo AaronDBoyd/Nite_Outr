@@ -18,7 +18,6 @@ function clearFields() {
 function getElements(response) {
   console.log(response);
   for (let i = 0; i < response.businesses.length; i++) {  
-
     if (response) {  
       const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
       let grubAsString = grub.join(', ');                                        
