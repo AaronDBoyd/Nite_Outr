@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
+import ActivityService from './services/activity-service.js';
 
 function clearFields() {
   $('#keyWordSearch').val("");
@@ -13,6 +14,14 @@ function clearFields() {
   $('#resultsTotal').val("");
   $('.showRestaurants').text("");
   $('.showErrors').text;
+  //Activities fields \/\/\/
+  $('#keyWordSearchA').val("");
+  $('#searchLocationA').val("");
+  $('#searchRadiusA').val("");
+  $('#priceRangeA').val("");
+  $('#resultsTotalA').val("");
+  $('.showRestaurantsA').text("");
+  $('.showErrorsA').text;
 }
 
 function getElements(response) {
@@ -49,7 +58,20 @@ $(document).ready(function() {
     DinnerService.getFood(searchWord, zip, radius, price, resultsTotal)
       .then(function(response) {
         getElements(response);
-      });
+    });
+  });
+  $('#enterSearchA').click(function() {
+    const searchWordA = $('#keyWordSearchA').val();
+    const zipA = $('#searchLocationA').val();
+    const radiusA = $('#searchRadiusA').val();
+    const priceA = $('#priceRangeA').val();
+    const resultsTotalA=$('#resultsTotalA').val();
+
+    clearFields();
+    ActivityService.getPlans(searchWordA, zipA, radiusA, priceA, resultsTotalA)
+      .then(function(response) {
+        getElements(response);
+    });
   });
 });
 
