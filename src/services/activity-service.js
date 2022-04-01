@@ -1,5 +1,5 @@
 export default class ActivityService {
-  static getPlans(searchWord, zip, radius, price, resultsTotal) {
+  static getPlans(searchWordA, zipA, radiusA, priceA, resultsTotalA) {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${process.env.API_KEY}`);
     myHeaders.append(`${process.env.API_KEY}`, "");
@@ -11,7 +11,7 @@ export default class ActivityService {
       redirect: 'follow',
     };
 
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWordA}&location=${zipA}&radius=${radiusA}&limit=${resultsTotalA}&sort_by=rating&price=${priceA}`, requestOptions)
       .then(function(response){
         if(!response.ok){
           throw Error(response.statusText);
