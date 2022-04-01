@@ -19,13 +19,22 @@ function getElements(response) {
   console.log(response);
   for (let i = 0; i < response.businesses.length; i++) {  
 
-  if (response) {  
-    const grub = (response.businesses[i].name);                                             
-    $('.showRestaurants').append(`${grub} <br>`); 
-  } else {
-    $('.showErrors').text(`There was an error processing your request: ${response.message}`);
-  }
-}}
+    if (response) {  
+      const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
+      let grubAsString = grub.join(', ');                                        
+      $('.showRestaurants').append(`${grubAsString} <br>`); 
+  // for (let i = 0; i < response.businesses.length; i++) {  
+  //   if (response) {  
+  //     const grub = response.businesses[i].name;  
+  //     const image = response.businesses[i].image_url; 
+  //     const phone = response.businesses[i].display_phone; 
+  //     const address = response.businesses[i].location.display_address;                                         
+  //     $('.showRestaurants').append(`${grub}<img src="${image}"> <br>`); 
+    } else {
+      $('.showErrors').text(`There was an error processing your request: ${response.message}`);
+    }
+}
+}
 
 $(document).ready(function() {
   $('#enterSearch').click(function() {
