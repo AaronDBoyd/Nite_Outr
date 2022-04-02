@@ -10,14 +10,14 @@ function clearFields() {
   $('#searchRadius').val("");
   $('#priceRange').val("");
   $('#resultsTotal').val("");
-  // $('#sortBy').val("");
   $('.showRestaurants').text("");
   $('.showErrors').text;
 }
 
 function getElements(response) {
   console.log(response);
-  for (let i = 0; i < response.businesses.length; i++) {  
+  console.log(response.total);
+  for (let i = 0; i < 10; i++) {  
 
     if (response) {  
       const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address, response.businesses[i].display_phone];     

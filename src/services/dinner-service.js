@@ -19,6 +19,7 @@ export default class DinnerService {
         return response.json();
       })
       .catch(function(error){
+        console.log(error);
         return error;
       });
   }
