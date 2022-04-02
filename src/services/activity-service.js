@@ -12,11 +12,11 @@ export default class ActivityService {
     };
 
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWordA}&location=${zipA}&radius=${radiusA}&limit=${resultsTotalA}&sort_by=rating&price=${priceA}`, requestOptions)
-      .then(function(responseA){
-        if(!responseA.ok){
-          throw Error(responseA.statusText);
+      .then(function(response){
+        if(!response.ok){
+          throw Error(response.statusText);
         }
-        return responseA.json();
+        return response.json();
       })
       .catch(function(error){
         return error;
