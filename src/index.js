@@ -12,7 +12,7 @@ function clearFields() {
   $('#priceRange').val("");
   // $('#sortBy').val("");
   $('#resultsTotal').val("");
-  $('.showRestaurants').text("");
+  // $('.showRestaurants').text("");
   $('.showErrors').text;
   //Activities fields \/\/\/
   $('#keyWordSearchA').val("");
@@ -20,48 +20,48 @@ function clearFields() {
   $('#searchRadiusA').val("");
   $('#priceRangeA').val("");
   $('#resultsTotalA').val("");
-  $('.showRestaurantsA').text("");
+  // $('.showActivities').text("");
   $('.showErrorsA').text;
 }
 
 function getElements(response) {
   console.log(response);
-  for (let i = 0; i < response.businesses.length; i++) {  
-
-    if (response) {  
-      const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
-      let grubAsString = grub.join(', ');                                        
-      $('.showRestaurants').append(`${grubAsString} <br>`); 
   // for (let i = 0; i < response.businesses.length; i++) {  
+
   //   if (response) {  
-  //     const grub = response.businesses[i].name;  
-  //     const image = response.businesses[i].image_url; 
-  //     const phone = response.businesses[i].display_phone; 
-  //     const address = response.businesses[i].location.display_address;                                         
-  //     $('.showRestaurants').append(`${grub}<img src="${image}"> <br>`); 
+  //     const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
+  //     let grubAsString = grub.join(', ');                                        
+  //     $('.showRestaurants').append(`${grubAsString} <br>`); 
+  for (let i = 0; i < response.businesses.length; i++) {  
+    if (response) {  
+      const grub = response.businesses[i].name;  
+      const image = response.businesses[i].image_url; 
+      const phone = response.businesses[i].display_phone; 
+      const address = response.businesses[i].location.display_address;                                         
+      $('.showRestaurants').append(`${grub},<br>${phone},<br>${address}<br><br>`); 
     } else {
       $('.showErrors').text(`There was an error processing your request: ${response.message}`);
     }
 }
 }
 
-function getElements(responseA) {
-  console.log(responseA);
+function getElementsA(response) {
+  console.log(response);
   // for (let i = 0; i < responseA.businesses.length; i++) {  
 
   //   if (responseA) {  
   //     const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
   //     let grubAsString = grub.join(', ');                                        
   //     $('.showRestaurants').append(`${grubAsString} <br>`); 
-  for (let i = 0; i < responseA.businesses.length; i++) {  
-    if (responseA) {  
-      const plans = responseA.businesses[i].name;  
-      const imageA = responseA.businesses[i].image_url; 
-      const phoneA = responseA.businesses[i].display_phone; 
-      const addressA = responseA.businesses[i].location.display_address;                                         
+  for (let i = 0; i < response.businesses.length; i++) {  
+    if (response) {  
+      const plans = response.businesses[i].name;  
+      const imageA = response.businesses[i].image_url; 
+      const phoneA = response.businesses[i].display_phone; 
+      const addressA = response.businesses[i].location.display_address;                                         
       $('.showActivities').append(`${plans},<br>${phoneA},<br>${addressA}<br><br>`); 
     } else {
-      $('.showErrors').text(`There was an error processing your request: ${responseA.message}`);
+      $('.showErrors').text(`There was an error processing your request: ${response.message}`);
     }
 }
 }
@@ -75,7 +75,7 @@ $(document).ready(function() {
     const resultsTotal=$('#resultsTotal').val();
     // const sortBy = $('#sortBy').val();
   
-    clearFields();
+    // clearFields();
     DinnerService.getFood(searchWord, zip, radius, price, resultsTotal)
       .then(function(response) {
         getElements(response);
@@ -88,10 +88,10 @@ $(document).ready(function() {
     const priceA = $('#priceRangeA').val();
     const resultsTotalA=$('#resultsTotalA').val();
 
-    clearFields();
+    // clearFields();
     ActivityService.getPlans(searchWordA, zipA, radiusA, priceA, resultsTotalA)
-      .then(function(responseA) {
-        getElements(responseA);
+      .then(function(response) {
+        getElementsA(response);
     });
   });
 });
