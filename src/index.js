@@ -11,13 +11,13 @@ function clearFields() {
   $('#priceRange').val("");
   $('#resultsTotal').val("");
   $('.showRestaurants').text("");
-  $('.showErrors').text;
+  $('.showErrors').text("");
 }
 
 function getElements(response) {
   console.log(response);
   console.log(response.total);
-  for (let i = 0; i < 10; i++) {  
+  for (let i = 0; i < response.businesses.length; i++) {  
 
     if (response) {  
       const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
@@ -27,7 +27,8 @@ function getElements(response) {
       ;                                        
       $('.showRestaurants').append(`${grubAsString}<br>${urlAsDisplay}<br><br>`); 
     } else {
-      $('.showErrors').text(`There was an error processing your request: ${response.error}`);
+      $('.showErrors').text(`There was an error processing your request: ${response}`);
+      console.log(response);
     }
   }
 }
