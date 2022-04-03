@@ -23,7 +23,7 @@ function getElements(response) {
   // }
   
   if (response.businesses) {  
-    for (let i = 0; i < response.total; i++) {  
+    for (let i = 0; i < response.businesses.length; i++) {  
       const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
       let grubAsString = grub.join(', ');
       const url = response.businesses[i].url;
