@@ -1,6 +1,6 @@
 
 export default class DinnerService {
-  static getFood(searchWord, zip, radius, price, resultsTotal) {
+  static getFood(searchWord, zip, radius, price, resultsTotal, category) {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${process.env.API_KEY}`);
     myHeaders.append(`${process.env.API_KEY}`, "");
@@ -12,8 +12,9 @@ export default class DinnerService {
       redirect: 'follow',
     };
 
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
-      .then(function(response){
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&categories=${category}&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
+      
+    .then(function(response){
         if(!response.ok){
           throw Error(response.statusText);
         }
