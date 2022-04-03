@@ -1,5 +1,11 @@
 body {
-  background-color: #9a43eb;
-  
+  /* background-color: rgba(233, 208, 238, 0.897); */
+  /* color:rgb(150, 5, 119); */
+}
+h1{
+  text-align: center;
 }
 
+.activities {
+  display: none;
+}
