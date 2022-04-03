@@ -1,5 +1,8 @@
 body {
   background-color: #9a43eb;
-  
+ 
 }
 
+.activities {
+  display: none;
+}
