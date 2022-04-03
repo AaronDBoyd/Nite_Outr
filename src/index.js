@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import 'bootswatch/dist/sketchy/bootstrap.min.css';
+//import 'bootswatch/dist/sketchy/bootstrap.min.css';
 import DinnerService from './services/dinner-service.js';
 
 function clearFields() {
