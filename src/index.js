@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootswatch/dist/vapor/bootstrap.min.css";
 import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
 
@@ -53,6 +54,7 @@ function getElementsA(response) {
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     $(".activities").show();
+    $("#forms").hide();
     const searchWord = $('#keyWordSearch').val();
     const zip = $('#searchLocation').val();
     const radius = $('#searchRadius').val();
