@@ -14,12 +14,14 @@ export default class DinnerService {
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&categories=restaurants&limit=${resultsTotal}&sort_by=distance&price=${price}`, requestOptions)
       .then(function(response){
         if(!response.ok){
-          throw Error(response.statusText);
+          console.log(response);
+          console.log([response.status, response.statusText]);
+          throw Error(`Error Type: ${response.statusText} <br> Error Code: ${response.status}`);
         }
         return response.json();
       })
       .catch(function(error){
-        return error;
+        return error.message;
       });
   }
     
