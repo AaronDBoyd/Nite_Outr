@@ -4,7 +4,7 @@ export default class DinnerService {
       let url = `https://api.yelp.com/v3/businesses/search?location=97206`;
       let req = new Request(url, {
         method:'GET',
-        headers: 'Authorization' `'Bearer ${process.env.API_KEY}}'`
+        headers: 'Authorization' `'Bearer ${process.env.API_KEY}'`
       });
       console.log(req);
       const response = await fetch (req);

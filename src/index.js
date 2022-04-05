@@ -1,3 +1,4 @@
+import { Loader } from "@googlemaps/js-api-loader"
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,7 +14,6 @@ function clearFields() {
   $('#resultsTotal').val("");
   $('.showRestaurants').text("");
   $('.showErrors').text;
-}
 
 function initMap() {
   let coords = [];
@@ -64,6 +64,6 @@ $(document).ready(function() {
 });
 
 
-// let prefix = "https://maps.googleapis.com/maps/api/staticmap?size=1600x400&key=AIzaSyAN36SBQsJTAlozGIkxQcpQdQ8F0TU5gSI"
+// let prefix = "https://maps.googleapis.com/maps/api/staticmap?size=1600x400&key="
 // loop: prefix.append(`&markers=color:red%7Clabel${(i+1).toString()}:%7C${long},${lat}`);
-// after loop: $
+// after loop
