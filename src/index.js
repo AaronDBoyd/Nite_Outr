@@ -1,4 +1,3 @@
-import { Loader } from "@googlemaps/js-api-loader"
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,10 +15,11 @@ function getElements(response) {
 
   if (response.businesses) {  
     for (let i = 0; i < response.businesses.length; i++) {  
-      const grub = [response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
+      let alpha = ["A","B","C","D","E","F","G","H","I","J"];
+      const grub = [alpha[i]+') '+ response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
       let grubAsString = grub.join('<br>');
       const url = response.businesses[i].url;
-      const urlAsDisplay = (`Click <a  id="link" href =${url}/a> here to learn more`);                                        
+      const urlAsDisplay = (`Click <a  id="link" href =${url}/a> here to learn more`);                                       
       $('.showRestaurants').append(`${grubAsString}<br>${urlAsDisplay}<br><br>`); 
     } if (response.total == 0){
       $('.showBadNews').append(`We're sorry, but nothing matched your search!`);
