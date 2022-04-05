@@ -64,6 +64,3 @@ $(document).ready(function() {
 });
 
 
-// let prefix = "https://maps.googleapis.com/maps/api/staticmap?size=1600x400&key="
-// loop: prefix.append(`&markers=color:red%7Clabel${(i+1).toString()}:%7C${long},${lat}`);
-// after loop
