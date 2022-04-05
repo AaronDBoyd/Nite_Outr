@@ -5,51 +5,47 @@ import "bootswatch/dist/vapor/bootstrap.min.css";
 import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
 
-
-function clearFields() {
-  $('#keyWordSearch').val("");
-  // $('#searchLocation').val("");
-  // $('#searchRadius').val("");
-  // $('#priceRange').val("");
-  // // $('#sortBy').val("");
-  // $('#resultsTotal').val("");
-  // // $('.showRestaurants').text("");
-  $('.showErrors').text;
-  //Activities fields \/\/\/
-  $('#keyWordSearchA').val("");
-  
-  // // $('.showActivities').text("");
-  $('.showErrorsA').text;
+function clearFields(){
+  $('.showErrors').text("");
 }
-
 function getElements(response) {
   console.log(response);
-  for (let i = 0; i < response.businesses.length; i++) {  
-    if (response) {  
-      const grub = response.businesses[i].name;   
-      const phone = response.businesses[i].display_phone; 
-      const address = response.businesses[i].location.display_address;                                         
-      $('.showRestaurants').append(`${grub},<br>${phone},<br>${address}<br><br>`); 
-    } else {
-      $('.showErrors').text(`There was an error processing your request: ${response.message}`);
-    }
-}
-}
+  console.log(response.total);
 
+  if (response.businesses) {  
+    for (let i = 0; i < response.businesses.length; i++) {  
+      const grub = [response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
+      let grubAsString = grub.join('<br>');
+      const url = response.businesses[i].url;
+      const urlAsDisplay = (`Click <a  id="link" href =${url}/a> here to learn more`);                                        
+      $('.showRestaurants').append(`${grubAsString}<br>${urlAsDisplay}<br><br>`); 
+    } if (response.total == 0){
+      $('.showBadNews').append(`We're sorry, but nothing matched your search!`);
+    }
+  }else {
+    $('.showErrors').append(`There was an error processing your request: <br>${response}`);
+    console.log(response);
+  }
+
+}
 function getElementsA(response) {
   console.log(response);
   
-  for (let i = 0; i < response.businesses.length; i++) {  
-    if (response) {  
-      const plans = response.businesses[i].name;   
-      const phoneA = response.businesses[i].display_phone; 
-      const addressA = response.businesses[i].location.display_address;                                         
-      $('.showActivities').append(`${plans},<br>${phoneA},<br>${addressA}<br><br>`); 
-    } else {
-      $('.showErrors').text(`There was an error processing your request: ${response.message}`);
+  if (response.businesses) {  
+    for (let i = 0; i < response.businesses.length; i++) {  
+      const afterDinner = [response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];
+      let afterDinnerAsString = afterDinner.join('<br>');   
+      const urlPlans = response.businesses[i].url;
+      const urlAsDisplayPlans = (`Click <a  id="link" href =${urlPlans}/a> to see what this place is all about!`);                                   
+      $('.showActivities').append(`${afterDinnerAsString}<br>${urlAsDisplayPlans}<br><br>`); 
+    } if (response.total == 0){
+      $('.showBadNewsA').append(`We're sorry, but nothing matched your search!`);
     }
+  } else {
+    $('.showErrorsA').text(`There was an error processing your request: ${response.message}`);
+  }  
 }
-}
+
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     $(".activities").show();
@@ -60,29 +56,27 @@ $(document).ready(function() {
     const price = $('#priceRange').val();
     const resultsTotal=$('#resultsTotal').val();
     const category = "restaurant";
-    // const sortBy = $('#sortBy').val();
-    
-    // clearFields();
+
+    clearFields();
     DinnerService.getFood(searchWord, zip, radius, price, resultsTotal, category)
       .then(function(response) {
         getElements(response);
-
-    });
+      });
   });
   $('#enterSearchA').click(function() {
-    const searchWordA = $('#keyWordSearchA').val();
+    const searchWordA =''; 
     const zip = $('#searchLocation').val();
     const radius = $('#searchRadius').val();
     const price = $('#priceRange').val();
     const resultsTotal=$('#resultsTotal').val();
-    const category = "all";
+    const category=$('#soManyActivities').val();
     //could add dropdown with limited choice for catagory (ie, nightlife, bowling, etc).
 
-    // clearFields();
+    clearFields();
     DinnerService.getFood(searchWordA, zip, radius, price, resultsTotal, category)
       .then(function(response) {
         getElementsA(response);
-    });
+      });
   });
 });
 
