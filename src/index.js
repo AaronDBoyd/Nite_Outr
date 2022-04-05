@@ -15,24 +15,38 @@ function clearFields() {
   $('.showErrors').text;
 }
 
+function initMap() {
+  let coords = [];
+  let markers =[];
+  const pdx= {lat: 45.523064, lng: -122.676483 };
+  const nicholas= {lat:45.5133, lng:-122.6545};
+  const kongs= {lat: 45.505443194670114, lng:-122.57600986137842};
+  coords.push(pdx, nicholas,kongs);
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 12,
+    center: pdx,
+  });
+  for (let i = 0; i < coords.length; i++){
+    markers[i]= new google.maps.Marker({
+      position: coords[i],
+      map:map,
+      label: (i+1).toString(),
+    });
+  }
+}
+window.initMap = initMap;
+
 function getElements(response) {
   console.log(response);
   for (let i = 0; i < response.businesses.length; i++) {  
     if (response) {  
-      const grub = [response.businesses[i].name, response.businesses[i].rating, response.businesses[i].location.display_address];     
+      const grub = [`${response.businesses[i].name}<br>Rating: ${response.businesses[i].rating}<br>${response.businesses[i].location.display_address}<br>${response.businesses[i].display_phone}<br> Link: <a href="${response.businesses[i].url}">business' Yelp webpage</a> <br>`];     
       let grubAsString = grub.join(', ');                                        
       $('.showRestaurants').append(`${grubAsString} <br>`); 
-  // for (let i = 0; i < response.businesses.length; i++) {  
-  //   if (response) {  
-  //     const grub = response.businesses[i].name;  
-  //     const image = response.businesses[i].image_url; 
-  //     const phone = response.businesses[i].display_phone; 
-  //     const address = response.businesses[i].location.display_address;                                         
-  //     $('.showRestaurants').append(`${grub}<img src="${image}"> <br>`); 
     } else {
       $('.showErrors').text(`There was an error processing your request: ${response.message}`);
     }
-}
+  }
 }
 
 $(document).ready(function() {
@@ -42,12 +56,14 @@ $(document).ready(function() {
     const radius = $('#searchRadius').val();
     const price = $('#priceRange').val();
     const resultsTotal=$('#resultsTotal').val();
-    // const sortBy = $('#sortBy').val();
-  
-    clearFields();
     DinnerService.getFood(searchWord, zip, radius, price, resultsTotal)
       .then(function(response) {
         getElements(response);
       });
   });
 });
+
+
+// let prefix = "https://maps.googleapis.com/maps/api/staticmap?size=1600x400&key=AIzaSyAN36SBQsJTAlozGIkxQcpQdQ8F0TU5gSI"
+// loop: prefix.append(`&markers=color:red%7Clabel${(i+1).toString()}:%7C${long},${lat}`);
+// after loop: $

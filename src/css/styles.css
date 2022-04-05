@@ -3,3 +3,6 @@ body {
   
 }
 
+#map {
+  display: none;
+}
