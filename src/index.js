@@ -6,24 +6,28 @@ import './css/styles.css';
 //import 'bootswatch/dist/sketchy/bootstrap.min.css';
 import DinnerService from './services/dinner-service.js';
 
+let alpha = ["A","B","C","D","E","F","G","H","I","J"];
+let mapUrl= `https://maps.googleapis.com/maps/api/staticmap?size=512x512&maptype=roadmap&key=${process.env.API_KEY2}`;
+
 function clearFields(){
   $('.showErrors').text("");
 }
 function getElements(response) {
   console.log(response);
   console.log(response.total);
-
   if (response.businesses) {  
     for (let i = 0; i < response.businesses.length; i++) {  
-      let alpha = ["A","B","C","D","E","F","G","H","I","J"];
       const grub = [alpha[i]+') '+ response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];     
       let grubAsString = grub.join('<br>');
       const url = response.businesses[i].url;
+      mapUrl=mapUrl+`&markers=color:red%7C${response.businesses[i].coordinates.longitude},${response.businesses[i].coordinates.latitude}%7Clabel:${alpha[i]}`;
       const urlAsDisplay = (`Click <a  id="link" href =${url}/a> here to learn more`);                                       
       $('.showRestaurants').append(`${grubAsString}<br>${urlAsDisplay}<br><br>`); 
     } if (response.total == 0){
       $('.showBadNews').append(`We're sorry, but nothing matched your search!`);
     }
+    $('.map').append(`<img src= "${mapUrl}>`);
+    console.log(mapUrl);
   }else {
     $('.showErrors').append(`There was an error processing your request: <br>${response}`);
     console.log(response);
@@ -35,7 +39,7 @@ function getElementsA(response) {
   
   if (response.businesses) {  
     for (let i = 0; i < response.businesses.length; i++) {  
-      const afterDinner = [response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];
+      const afterDinner = [alpha[i]+') '+ response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];
       let afterDinnerAsString = afterDinner.join('<br>');   
       const urlPlans = response.businesses[i].url;
       const urlAsDisplayPlans = (`Click <a  id="link" href =${urlPlans}/a> to see what this place is all about!`);                                   
