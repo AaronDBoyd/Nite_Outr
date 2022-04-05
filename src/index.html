@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Restaurant Finder</title>
   <link rel="icon" type="imae/x-icon" href="https://www.favicon.cc/logo3d/900481.png">
+  <title>Nite_Outr</title>
 </head>
 <body>
   <div class="container">
-    <h1>Search for Restaurants</h1>
-    <h1>Is this a website?</h1>
-    <h2>What are you in the mood for?</h2>
+    <h1>Nite Outr</h1>
+
+    <div class="row">
+      <div class="col">
+    <h2>Search for Restaurants</h2>
+    
+    <br>
+    <h4>What kind of food are you in the mood for?</h4>
     <label for="keyWordSearch"></label>
-    <input id="keyWordSearch" type="text">
-    <h2>Enter a ZIP:</h2>
+    <input class="form-control" id="keyWordSearch" type="text">
+    <div id="forms">
+
+    <h4>What's Your ZIP Code?</h4>
     <label for="searchLocation"></label>
-    <input id="searchLocation" type="text">
-    <h2>how far do you want to travel?</h2>
+    <input class="form-control" id="searchLocation" type="text">
+    <h4>How far do you want to travel?</h4>
     <select class="form-control" id="searchRadius">
       <option value="1000">Less than a mile</option>
       <option value="1600">Within a mile</option>
@@ -23,30 +30,54 @@
       <option value="8000">I'm happy to travel, show me things within five miles</option>
     </select>
 
-    <h2>How's your wallet feel?</h2>
+    <h4>How's your wallet feel?</h4>
     <select class = "form-control" id="priceRange">
       <option value ="1">Kinda light</option>
       <option value ="1,2">I could splurge, but I'm still on a budget</option>
       <option value="1,2,3">Hey, I got some money to burn</option>
-      <option value="1,2,3,4">Psh, I'm a web dev, I don't worry about money</option>
+      <option value="1,2,3,4">Just leave the bill with my assistant, they'll handle payment</option>
     </select>
     
-    <h2>How many options would you like to see?</h2>
+    <h4>How many options would you like to see?</h4>
     <select class="form-control" id="resultsTotal">
       <option value="1">One</option>
       <option value="3">Three</option>
       <option value="5">Five</option>
       <option value="10">Ten</option>
     </select>
+    </div>
 
-
-    <button class="btn-success" id="enterSearch">Search</button>
+    <button class="btn-primary" id="enterSearch">Search</button>
     <div class="showRestaurants"></div>
     <div class="showErrors"></div>
-
+    <div class="showBadNews"></div>
+    </div>
+    <div class="col">
+  <div class="activities">
+    <h2>After Dinner activities</h2>
+    <br>
+    <h4>Let's Keep This Party Rolling!</h4>
+    <br>
+    <select class = "form-control" id="soManyActivities">
+      <option value="movietheaters">Find a movie</option>
+      <option value="bars">Get some drinks</option>
+      <option value="axethrowing">Axe throwing is quite popular these days</option>
+      <option value="musicvenues">Go see some live music!</option>
+      <option value="comedyclubs">Find some live comedy?</option>
+      <option value="adultentertainment">No kids allowed</option>
+    </select>
     
   
+      <br>
+    <button class="btn-primary" id="enterSearchA">Search</button>
+    <div class="showActivities"></div>
+    <div class="showBadNewsA"></div>
+    <div class="showErrorsA"></div>
 
+  
+  </div>
+    </div>
+    </div>
 
 
 
