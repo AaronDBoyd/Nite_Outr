@@ -1,9 +1,9 @@
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootswatch/dist/LUX/bootstrap.min.css';
 import "bootswatch/dist/vapor/bootstrap.min.css";
 import './css/styles.css';
-//import 'bootswatch/dist/sketchy/bootstrap.min.css';
 import DinnerService from './services/dinner-service.js';
 
 function clearFields(){
@@ -27,8 +27,8 @@ function getElements(response) {
     $('.showErrors').append(`There was an error processing your request: <br>${response}`);
     console.log(response);
   }
-
 }
+
 function getElementsA(response) {
   console.log(response);
   
@@ -43,7 +43,7 @@ function getElementsA(response) {
       $('.showBadNewsA').append(`We're sorry, but nothing matched your search!`);
     }
   } else {
-    $('.showErrorsA').text(`There was an error processing your request: ${response.message}`);
+    $('.showErrorsA').text(`There was an error processing your request: <br>${response}`);
   }  
 }
 
@@ -71,8 +71,7 @@ $(document).ready(function() {
     const price = $('#priceRange').val();
     const resultsTotal=$('#resultsTotal').val();
     const category=$('#soManyActivities').val();
-    //could add dropdown with limited choice for catagory (ie, nightlife, bowling, etc).
-
+    
     clearFields();
     DinnerService.getFood(searchWordA, zip, radius, price, resultsTotal, category)
       .then(function(response) {

@@ -10,8 +10,6 @@ export default class DinnerService {
       headers: myHeaders,
       redirect: 'follow',
     };
-
-    console.log(fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&categories=${category}&limit=${resultsTotal}&sort_by=rating&price=${price}`));
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${searchWord}&location=${zip}&radius=${radius}&categories=${category}&limit=${resultsTotal}&sort_by=rating&price=${price}`, requestOptions)
       .then(function(response){
         if(!response.ok){
@@ -23,6 +21,5 @@ export default class DinnerService {
         return error.message;
       });
   }
-    
 }
 
