@@ -32,11 +32,14 @@ A website that takes in a users interest in what food they want, their zipcode, 
 This project showcases making calls to APIs (Yelp and Google maps) and parsing the data to provide simple data back to the user.
 
 ## Setup/Installation Requirements
-* Navigate to [Yelp Fusion](https://fusion.yelp.com/) and sign up for an account, after which you can get an API key. 
+* Navigate to [Yelp Fusion](https://fusion.yelp.com/) and sign up for an account, after which you can get an API key.
+* Get a api key from [Google's cloud services] (https://developers.google.com/maps/documentation/maps-static/cloud-setup)
 * Gain access to the temporary CORS work-around by clicking [here](https://cors-anywhere.herokuapp.com/corsdemo) and click the button on the page that says "Request temporary access to the demo server". This will allow the API to run without CORS. 
 * Clone or download this repository onto your desktop.
 * Create a .env file with $touch .env
-* _Open .env file and type in your API key like so: API_KEY=ENTERYOURKEYHERE
+* _Open .env file and type in your yelp API key like so: API_KEY=ENTERYOURKEYHERE
+* in the same .env file, type your Google API key like so: API_KEY2=ENTERYOURKEYHERE
+* This app was mainly developed in a PC enviornment. If using a Mac, make sure files are configured correctly for your machine (ie, the 'start' script should join actions with ";" instead of "&&")
 * In console, run $npm install
 * In console, run $npm run build
 * In console, run $npm run start
@@ -44,6 +47,7 @@ This project showcases making calls to APIs (Yelp and Google maps) and parsing t
 ## Known Bugs
 
 - Must use cors-anywhere in order to successfully make an API call. Visit [this site](https://cors-anywhere.herokuapp.com/corsdemo) to get temporary access to cors-anywhere.
+- App may not load correctly with certain node versions. It should work with version 16.14. We had problems with 17.
 - No other known bugs.
 
 ## License

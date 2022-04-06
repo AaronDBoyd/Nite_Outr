@@ -57,6 +57,7 @@ function getElementsA(response) {
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     $(".activities").show();
+    $(".map").show();
     $("#forms").hide();
     const searchWord = $('#keyWordSearch').val();
     const zip = $('#searchLocation').val();

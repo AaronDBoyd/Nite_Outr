@@ -19,7 +19,7 @@ h2{
   text-decoration: underline;
 }
 
-.activities {
+.activities, .mapNote{
   display: none;
 }
 
