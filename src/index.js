@@ -7,7 +7,7 @@ import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
 
 let alpha = ["A","B","C","D","E","F","G","H","I","J"];
-let mapUrl= `https://maps.googleapis.com/maps/api/staticmap?size=512x512&key=${process.env.API_KEY2}`;
+let mapUrl= `https://maps.googleapis.com/maps/api/staticmap?size=400x400&key=${process.env.API_KEY2}`;
 
 function clearFields(){
   $('.showErrors').text("");
