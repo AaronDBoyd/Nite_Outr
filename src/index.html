@@ -11,95 +11,102 @@
     <br>
     <div class="row">
       <div class="col">
-    <h2>Search for Restaurants</h2>
-    <br>
-    <label for="keyWordSearch"><h4>What kind of food are you in the mood for?</h4></label>  
-    <nav class="navbar-dark bg-primary" type="text">
-      <form class="w-100 p-1">
-        <input class="form-control me-sm-2" id="keyWordSearch" type="text" placeholder="Enter food choice">
-      </form>
-    </nav>
-    <br>
-    <div id="forms">
-    <label for="searchLocation"><h4>What's your ZIP Code?</h4></label>
-    <nav class="navbar-dark bg-primary" type="text">
-      <form class="w-100 p-1">
-        <input class="form-control me-sm-2" id="searchLocation" type="text" placeholder="Enter your zip code">
-      </form>
-    </nav>
-    <br>
-    <h4>How far do you want to travel?</h4>
-    <nav class="navbar-dark bg-primary">
-      <form class="w-100 p-1">
-    <select class="form-control" id="searchRadius">
-      <option value="1000">Less than a mile</option>
-      <option value="1600">Within a mile</option>
-      <option value="3200">We could go up to two miles, I guess?</option>
-      <option value="4800">We've got bikes, lets see what is within three miles!</option>
-      <option value="8000">I'm happy to travel, show me things within five miles</option>  
-    </select>
-    </form>
-    </nav>
-    <br>
-    <h4>How's your wallet feel?</h4>
-    <nav class="navbar-dark bg-primary">
-      <form class="w-100 p-1">
-    <select class = "form-control" id="priceRange">
-      <option value ="1">Kinda light</option>
-      <option value ="1,2">I could splurge, but I'm still on a budget</option>
-      <option value="1,2,3">Hey, I got some money to burn</option>
-      <option value="1,2,3,4">Just leave the bill with my assistant, they'll handle payment</option>      
-    </select>
-    </form>
-  </nav>
-    <br>
-    <h4>How many options would you like to see?</h4>
-    <nav class="navbar-dark bg-primary">
-      <form class="w-100 p-1">
-    <select class="form-control" id="resultsTotal">
-      <option value="1">One</option>
-      <option value="3">Three</option>
-      <option value="5">Five</option>
-      <option value="10">Ten</option>
-    </select>
-    </form>
-    </nav>
-    <br>
-    </div>
-    <button class="btn-primary" id="enterSearch">Search</button>
-    <div class="showRestaurants"></div>
-    <div class="showErrors"></div>
-    <div class="showBadNews"></div>
-    </div>
-    <div class="col">
-  <div class="activities">
-    <h2>After Dinner activities</h2>
-    <br>
-    <h4>Let's Keep This Party Rolling!</h4>
-    <nav class="navbar-dark bg-primary">
-      <form class="w-100 p-1">
-        <select class = "form-control" id="soManyActivities" >
-          <option value="movietheaters">Find a movie</option>
-          <option value="bars">Get some drinks</option>
-          <option value="axethrowing">Axe throwing is quite popular these days</option>
-          <option value="musicvenues">Go see some live music!</option>
-          <option value="comedyclubs">Find some live comedy?</option>
-          <option value="ziplining">Ziplining</option>
-          <option value="arcades">Check out an arcade!</option>
-          <option value="gardens">Botanical Gardens</option>
-          <option value="casinos">Gambling is never a bad idea</option>
-          <option value="funeralservices">A romantic stroll through a cemetary</option>
-          <option value="adultentertainment">No kids allowed</option>
-        </select>
-      </form>
-    </nav>
-      <br>
-    <button class="btn-primary" id="enterSearchA">Search</button>
-    <div class="showActivities"></div>
-    <div class="showBadNewsA"></div>
-    <div class="showErrorsA"></div>
-  </div>
-    </div>
+        <h2>Search for Restaurants</h2>
+        <br>
+        <label for="keyWordSearch"><h4>What kind of food are you in the mood for?</h4></label>  
+        <nav class="navbar-dark bg-primary" type="text">
+          <form class="w-100 p-1">
+            <input class="form-control me-sm-2" id="keyWordSearch" type="text" placeholder="Enter food choice">
+          </form>
+        </nav>
+        <br>
+        <div id="forms">
+          <label for="searchLocation"><h4>What's your ZIP Code?</h4></label>
+          <nav class="navbar-dark bg-primary" type="text">
+            <form class="w-100 p-1">
+            <input class="form-control me-sm-2" id="searchLocation" type="text" placeholder="Enter your zip code">
+          </form>
+          </nav>
+          <br>
+          <h4>How far do you want to travel?</h4>
+          <nav class="navbar-dark bg-primary">
+            <form class="w-100 p-1">
+              <select class="form-control" id="searchRadius">
+                <option value="1000">Less than a mile</option>
+                <option value="1600">Within a mile</option>
+                <option value="3200">We could go up to two miles, I guess?</option>
+                <option value="4800">We've got bikes, lets see what is within three miles!</option>
+                <option value="8000">I'm happy to travel, show me things within five miles</option>  
+              </select>
+            </form>
+          </nav>
+          <br>
+          <h4>How's your wallet feel?</h4>
+          <nav class="navbar-dark bg-primary">
+            <form class="w-100 p-1">
+              <select class = "form-control" id="priceRange">
+                <option value ="1">Kinda light</option>
+                <option value ="1,2">I could splurge, but I'm still on a budget</option>
+                <option value="1,2,3">Hey, I got some money to burn</option>
+                <option value="1,2,3,4">Just leave the bill with my assistant, they'll handle payment</option>      
+              </select>
+            </form>
+          </nav>
+          <br>
+          <h4>How many options would you like to see?</h4>
+          <nav class="navbar-dark bg-primary">
+            <form class="w-100 p-1">
+              <select class="form-control" id="resultsTotal">
+                <option value="1">One</option>
+                <option value="3">Three</option>
+                <option value="5">Five</option>
+                <option value="10">Ten</option>
+              </select>
+            </form>
+          </nav>
+          <br>
+        </div>
+        <button class="btn-primary" id="enterSearch">Search</button>
+        <div class="showRestaurants"></div>
+        <div class="showErrors"></div>
+        <div class="showBadNews"></div>
+        </div>
+        <div class="col">
+          <br><br><br><br><br>
+          <div class="mapNote">
+            <p>restaurant results are in <span style="color:red">red</span>, after-dinner activities are <span style="color:rgb(49, 44, 44)">grey</span>.</p>
+          </div>
+          <div class ="map"></div>
+        </div>
+        <div class="col">
+          <div class="activities">
+            <h2>After Dinner activities</h2>
+            <br>
+            <h4>Let's Keep This Party Rolling!</h4>
+            <nav class="navbar-dark bg-primary">
+              <form class="w-100 p-1">
+                <select class = "form-control" id="soManyActivities">
+                  <option value="movietheaters">Find a movie</option>
+                  <option value="bars">Get some drinks</option>
+                  <option value="axethrowing">Axe throwing is quite popular these days</option>
+                  <option value="musicvenues">Go see some live music!</option>
+                  <option value="comedyclubs">Find some live comedy?</option>
+                  <option value="ziplining">Ziplining</option>
+                  <option value="arcades">Check out an arcade!</option>
+                  <option value="gardens">Botanical Gardens</option>
+                  <option value="casinos">Gambling is never a bad idea</option>
+                  <option value="funeralservices">A romantic stroll through a cemetary</option>
+                  <option value="adultentertainment">No kids allowed</option>
+                </select>
+              </form>
+            </nav>
+            <br>
+            <button class="btn-primary" id="enterSearchA">Search</button>
+            <div class="showActivities"></div>
+            <div class="showBadNewsA"></div>
+            <div class="showErrorsA"></div>
+          </div>
+        </div>
     </div>
   </div>
 </body>
