@@ -6,6 +6,7 @@ import "bootswatch/dist/vapor/bootstrap.min.css";
 import './css/styles.css';
 import DinnerService from './services/dinner-service.js';
 
+
 let alpha = ["A","B","C","D","E","F","G","H","I","J"];
 let mapUrl= `https://maps.googleapis.com/maps/api/staticmap?size=400x400&key=${process.env.API_KEY2}`;
 
@@ -26,15 +27,12 @@ function getElements(response) {
       $('.showBadNews').append(`We're sorry, but nothing matched your search!`);
     }
     $('.map').append(`<img src= "${mapUrl}">`);
-    console.log(mapUrl);
   }else {
     $('.showErrors').append(`There was an error processing your request: <br>${response}`);
-    console.log(response);
   }
 }
 
 function getElementsA(response) {
-  console.log(response);
   if (response.businesses) {  
     for (let i = 0; i < response.businesses.length; i++) {  
       const afterDinner = [alpha[i]+') '+ response.businesses[i].name, `Rating: ${response.businesses[i].rating}`, response.businesses[i].location.display_address, response.businesses[i].display_phone];
@@ -48,7 +46,6 @@ function getElementsA(response) {
     }
     $('.map').html("");
     $('.map').append(`<img src= "${mapUrl}">`);
-    console.log(mapUrl);
   } else {
     $('.showErrorsA').text(`There was an error processing your request: <br>${response}`);
   }  
@@ -57,7 +54,8 @@ function getElementsA(response) {
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     $(".activities").show();
-    $(".mapNote").show();
+    $(".map").fadeIn();
+    $(".mapNote").fadeIn();
     $("#forms").hide();
     const searchWord = $('#keyWordSearch').val();
     const zip = $('#searchLocation').val();
@@ -85,6 +83,13 @@ $(document).ready(function() {
       .then(function(response) {
         getElementsA(response);
       });
+  });
+});
+
+$(document).ready(function(){
+  $(".click").click(function(){
+    $(".devs-showing").toggle();
+    $(".devs-hidden").toggle();
   });
 });
 

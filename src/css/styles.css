@@ -19,7 +19,7 @@ h2{
   text-decoration: underline;
 }
 
-.activities, .mapNote{
+.activities, .mapNote, .map{
   display: none;
 }
 
@@ -41,3 +41,4 @@ h2{
     font-weight: bold;
     
 }
+
