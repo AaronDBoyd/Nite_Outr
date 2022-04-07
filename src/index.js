@@ -57,7 +57,7 @@ function getElementsA(response) {
 $(document).ready(function() {
   $('#enterSearch').click(function() {
     $(".activities").show();
-    $(".map").show();
+    $(".mapNote").show();
     $("#forms").hide();
     const searchWord = $('#keyWordSearch').val();
     const zip = $('#searchLocation').val();
@@ -79,7 +79,7 @@ $(document).ready(function() {
     const price = $('#priceRange').val();
     const resultsTotal=$('#resultsTotal').val();
     const category=$('#soManyActivities').val();
-    
+
     clearFields();
     DinnerService.getFood(searchWordA, zip, radius, price, resultsTotal, category)
       .then(function(response) {
